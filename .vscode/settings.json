@@ -1,0 +1,20 @@
+{
+  "python.defaultInterpreterPath": ".venv/bin/python",
+
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "editor.rulers": [88],
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.unusedImports": "always"
+    }
+  },
+  "isort.args": ["--profile", "black"]
+}

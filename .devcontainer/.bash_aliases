@@ -1,0 +1,2 @@
+alias gpull="git checkout main && git pull origin main && git checkout develop && git pull origin develop"
+alias gpush="git checkout main && git push origin main && git checkout develop && git push origin develop"

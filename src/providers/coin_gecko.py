@@ -13,7 +13,7 @@ class Coin(Enum):
 
 class CoinGecko:
     URL = "https://api.coingecko.com/api/v3"
-    STORAGE_PATH = "storage"
+    DATA_PATH = "storage/data"
 
     def run(self, days: int = 30):
         for coin in Coin:
@@ -37,6 +37,6 @@ class CoinGecko:
         return df
 
     def _save(self, df: pd.DataFrame, coin: Coin):
-        pathlib.Path(self.STORAGE_PATH).mkdir(parents=True, exist_ok=True)
-        path = f"{self.STORAGE_PATH}/{coin.value}.csv"
+        pathlib.Path(self.DATA_PATH).mkdir(parents=True, exist_ok=True)
+        path = f"{self.DATA_PATH}/{coin.value}.csv"
         df.to_csv(path, index=False)

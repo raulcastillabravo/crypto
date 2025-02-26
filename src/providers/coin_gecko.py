@@ -31,7 +31,7 @@ class CoinGecko:
         response = requests.get(url, params=params)
         data = response.json()
 
-        df = pd.DataFrame(data["prices"], columns=["timestamp", f"{coin.value}_price"])
+        df = pd.DataFrame(data["prices"], columns=["timestamp", "price"])
         df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
 
         return df

@@ -19,6 +19,7 @@ class CoinPredictionModel:
     def __init__(self, coin: Coin):
         self._coin = coin
         self._model = LinearRegression()
+        self._load_model()
 
     def train(self):
         df = self._load_data()
@@ -61,3 +62,8 @@ class CoinPredictionModel:
         pathlib.Path(self.MODEL_PATH).mkdir(parents=True, exist_ok=True)
         joblib.dump(self._model, f"{self.MODEL_PATH}/{self._coin.value}_model.pkl")
         joblib.dump(scaler, f"{self.MODEL_PATH}/{self._coin.value}_scaler.pkl")
+
+    def _load_model(self):
+        model_path = f"{self.MODEL_PATH}/{self._coin.value}_model.pkl"
+        if pathlib.Path(model_path).exists():
+            self._model = joblib.load(model_path)
